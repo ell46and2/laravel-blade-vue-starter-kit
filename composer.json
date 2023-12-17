@@ -13,6 +13,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "larastan/larastan": "^2.0",
         "laravel/breeze": "^1.26",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
@@ -27,7 +28,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -47,6 +51,19 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "pint": [
+            "./vendor/bin/pint"
+        ],
+        "pint-test": [
+            "./vendor/bin/pint --test"
+        ],
+        "stan": [
+            "./vendor/bin/phpstan analyse"
+        ],
+        "lint": [
+            "./vendor/bin/pint --test",
+            "./vendor/bin/phpstan analyse"
         ]
     },
     "extra": {

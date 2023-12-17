@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
@@ -26,13 +28,13 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        authenticatedUser()->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if (authenticatedUser()->isDirty('email')) {
+            authenticatedUser()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        authenticatedUser()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -46,7 +48,7 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
-        $user = $request->user();
+        $user = authenticatedUser();
 
         Auth::logout();
 

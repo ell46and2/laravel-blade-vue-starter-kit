@@ -1,0 +1,15 @@
+{
+    "semi": true,
+    "printWidth": 120,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "tabWidth": 4,
+    "quoteProps": "as-needed",
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "arrowParens": "always",
+    "vueIndentScriptAndStyle": false,
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ]
+}
